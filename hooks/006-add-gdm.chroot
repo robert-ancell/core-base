@@ -10,7 +10,6 @@ trap 'umount /proc' EXIT
 
 apt install --no-install-recommends -y \
     gdm3 \
-    gnome-initial-setup \
     polkitd \
     xwayland \
     libgl1-mesa-dri \
@@ -91,19 +90,6 @@ rm -f /usr/lib/systemd/user/colord-session.service
 # reliably get rid of it with Conflicts/After
 touch /var/lib/console-conf/complete
 
-# gnome-initial-setup uses AccountsService to create the user account.
-# AccountsService in turn calls /usr/sbin/adduser.  Replace that
-# script with a wrapper that adds the --extrausers argument.
-#
-# Unfortunately this does not work for the addusers call to add the
-# user to the sudo group.
-mv /usr/sbin/adduser /usr/sbin/adduser.real
-cat <<\EOF > /usr/sbin/adduser
-#!/bin/sh
-exec /usr/sbin/adduser.real --extrausers "$@"
-EOF
-chmod a+x /usr/sbin/adduser
-
 # Force gsd-xsettings to use the regular DISPLAY connection. If it
 # tries to connect to :1, gnome-shell will not auto-start Xwayland.
 mv /usr/libexec/gsd-xsettings /usr/libexec/gsd-xsettings.real
@@ -119,9 +105,6 @@ chmod a+x /usr/libexec/gsd-xsettings
 # by Ubuntu Core.
 sed -i "/^ReadWritePaths=/ a \\  /var/lib/extrausers/ \\\\" \
     /usr/lib/systemd/system/accounts-daemon.service
-
-## Skip goa page in gnome-initial-setup
-sed -i 's/skip=language/skip=language;goa/g' /usr/share/gnome-initial-setup/vendor.conf
 
 # Hide gnome-terminal by default
 sed -i 's/OnlyShowIn=/NoDisplay=true\nOnlyShowIn=/g' /usr/share/applications/org.gnome.Terminal.desktop

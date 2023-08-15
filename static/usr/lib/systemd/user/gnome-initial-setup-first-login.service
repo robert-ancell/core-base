@@ -1,0 +1,16 @@
+[Unit]
+Description=Ubuntu Core Desktop Init
+
+BindsTo=gnome-session.target
+After=gnome-session.target
+
+# Never run in GDM
+Conflicts=gnome-session@gnome-login.target
+
+Conflicts=gnome-session@gnome-initial-setup.target
+ConditionPathExists=!%E/gnome-initial-setup-done
+
+[Service]
+Type=oneshot
+ExecStart=snap run ubuntu-core-desktop-init
+Restart=no
