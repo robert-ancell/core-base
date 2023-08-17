@@ -126,6 +126,11 @@ sed -i 's/skip=language/skip=language;goa/g' /usr/share/gnome-initial-setup/vend
 # Hide gnome-terminal by default
 sed -i 's/OnlyShowIn=/NoDisplay=true\nOnlyShowIn=/g' /usr/share/applications/org.gnome.Terminal.desktop
 
+# Launch ubuntu-core-desktop-init instead of gnome-initial-setup
+sed -i 's#/usr/libexec/gnome-initial-setup --existing-user#snap run ubuntu-core-desktop-init#g' /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+sed -i 's#/usr/libexec/gnome-initial-setup --existing-user#snap run ubuntu-core-desktop-init#g' /usr/lib/systemd/user/gnome-initial-setup-first-login.service
+sed -i 's#/usr/libexec/gnome-initial-setup#snap run ubuntu-core-desktop-init#g' /usr/share/applications/gnome-initial-setup.desktop
+
 # Remove regular Ubuntu sessions, so only confined session is available
 rm -f /usr/share/wayland-sessions/ubuntu.desktop
 rm -f /usr/share/wayland-sessions/ubuntu-wayland.desktop
