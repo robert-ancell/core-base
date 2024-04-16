@@ -2,6 +2,10 @@
 
 set -eux
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 001"
+fi
+
 export DEBIAN_FRONTEND=noninteractive
 
 # TODO: work with foundation to not have PROPOSED=1 when building the

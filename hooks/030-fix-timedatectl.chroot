@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 030"
+fi
+
 mv /usr/bin/timedatectl /usr/bin/timedatectl.real
 
 cat >/usr/bin/timedatectl<<'EOF'

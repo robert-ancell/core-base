@@ -4,6 +4,11 @@
 # and now, after all hooks have run, to make sure none of our changes earlier caused
 # the files to change.
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "Ensure passwd file does not change"
 diff -u /etc/passwd /etc/passwd.orig
 rc=$?; [ "$rc" != "0" ] && MISMATCH=1

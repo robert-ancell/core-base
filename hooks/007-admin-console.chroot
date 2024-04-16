@@ -1,5 +1,10 @@
 #!/bin/bash -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 007"
+fi
+
 # Add script to run when opening terminal to ssh localhost
 cat >/usr/bin/admin-console<<EOF
 #!/bin/bash

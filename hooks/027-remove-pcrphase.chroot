@@ -2,6 +2,10 @@
 
 set -eux
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 027"
+fi
+
 # systemd-pcrphase depends on tpm2-tss which we do not provide
 # systemd-pcrphase measures the phase of the boot in PCR 11.  PCR 11
 # is meant to measure signed kernel sections (see systemd-measure)

@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "Remove packages we no longer need after postinst/hooks"
 
 # Who also uses perl stuff?

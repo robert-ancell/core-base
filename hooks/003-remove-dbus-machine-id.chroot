@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 003"
+fi
+
 # Remove dbus machine id.
 #
 # This removes dbus machine id that makes each system unique.

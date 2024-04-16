@@ -1,5 +1,10 @@
 #!/bin/sh -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "Creating the snap binary symlink"
 ln -s /snap/snapd/current/usr/bin/snap /usr/bin/snap
 

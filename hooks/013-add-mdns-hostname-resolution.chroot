@@ -1,5 +1,9 @@
 #!/bin/sh -ex
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 013"
+fi
+
 export DEBIAN_FRONTEND=noninteractive
 
 echo "Installing libnss-mdns"

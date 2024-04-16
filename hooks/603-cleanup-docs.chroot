@@ -4,6 +4,11 @@
 
 set -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "I: Removing docs"
 
 # docs, drop changelogs and examples, but leave the copyright

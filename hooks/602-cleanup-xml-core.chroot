@@ -5,6 +5,11 @@
 
 set -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "I: Removing xml-core runnable bits"
 
 rm -r \

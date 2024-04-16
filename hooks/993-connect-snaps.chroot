@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 if [ -f /usr/libexec/snap-connections.sh ]; then
     cat >/etc/systemd/system/manual-plug-connection.service <<'EOF'
 [Unit]

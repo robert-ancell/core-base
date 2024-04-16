@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 005"
+fi
+
 # Remove gpt-auto-generator
 #
 # snap-bootstrap controls mount on UC20 and this generator can result

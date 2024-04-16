@@ -1,4 +1,11 @@
 #!/bin/sh -ex
+
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
+
 # This sequence is modelled after snapd's packaging/snapd.mk it also contains
 # the important "void" directory, along with the special permissions it
 # carries.

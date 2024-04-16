@@ -1,5 +1,10 @@
 #!/bin/sh -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 if grep -v '^#' </etc/system-image/writable-paths | grep synced; then
     echo "Using 'synced' in /etc/system-image/writable-paths is not allowed in core20"
     exit 1

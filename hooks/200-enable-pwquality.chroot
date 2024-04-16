@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 # Enable pam configuration for pwquality
 pam-auth-update --enable pwquality
 # and verify it is available

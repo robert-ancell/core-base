@@ -1,5 +1,10 @@
 #!/bin/sh -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 mkdir -p /usr/share/p11-kit/modules
 echo "Creating p11-kit-client module configuration"
 echo "module: p11-kit-client.so" > \

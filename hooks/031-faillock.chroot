@@ -2,4 +2,8 @@
 
 set -eu
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 031"
+fi
+
 pam-auth-update --enable optional-faillock optional-faillock-preauth optional-faillock-authsucc

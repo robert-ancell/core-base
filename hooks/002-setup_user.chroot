@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 002"
+fi
+
 # There is no default user anymore, console-conf is responsible
 # for creating one
 

@@ -4,6 +4,11 @@
 
 set -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "I: Removing hwdb input files"
 
 find usr/lib/udev/hwdb.d/ -name "*.hwdb" -print -delete

@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 # Many things in the generated /etc directory are not really needed and are
 # clouding the view towards the work of eventually shipping with empty /etc
 echo "Cleaning up unneeded files in /etc"
@@ -85,5 +89,3 @@ mkdir -p /usr/local/share/fonts
 rm -rf /var/cache/debconf
 
 # FIXME: make /etc/lsb-release point to ../usr/lib/lsb-release
-
-rm -f /var/lib/dbus/machine-id

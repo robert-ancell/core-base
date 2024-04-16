@@ -2,5 +2,9 @@
 
 set -eu
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 011"
+fi
+
 # TODO: remove this hook when we have core-initrd for 24
 sed -i 's/,orphan_file//' /etc/mke2fs.conf

@@ -1,5 +1,9 @@
 #!/bin/sh -ex
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 012"
+fi
+
 echo "I: Checking if we are amd64 and libc6:i386 should be installed"
 
 if [ "$(dpkg --print-architecture)" = "amd64" ]; then

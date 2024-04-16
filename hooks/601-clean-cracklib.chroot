@@ -5,6 +5,12 @@
 
 set -eu
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
+
 rm /etc/cracklib/cracklib.conf
 rmdir /etc/cracklib
 rm /etc/logcheck/ignore.d.paranoid/cracklib-runtime

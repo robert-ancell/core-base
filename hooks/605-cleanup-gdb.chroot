@@ -5,5 +5,10 @@
 
 set -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 rm -rv usr/share/gdb
 rm -rv usr/share/gcc/python

@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 010"
+fi
+
 apt install --no-install-recommends -y gnome-initial-setup
 
 # Launch ubuntu-core-desktop-init instead of gnome-initial-setup

@@ -1,5 +1,9 @@
 #!/bin/sh -ex
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 016"
+fi
+
 echo "Create the boot mount points"
 mkdir -p /boot/androidboot
 mkdir -p /boot/uboot

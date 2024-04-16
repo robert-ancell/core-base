@@ -2,6 +2,11 @@
 
 set -eux
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "ensure the systemd target.wants are in /lib instead of /etc"
 for d in multi-user.target.wants sysinit.target.wants timers.target.wants; do
     mv etc/systemd/system/"$d"/* lib/systemd/system/"$d"

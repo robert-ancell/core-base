@@ -2,4 +2,9 @@
 
 # add all requirements for bits used by the hooks/configure script
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 mkdir -p /etc/systemd/logind.conf.d

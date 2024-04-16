@@ -2,6 +2,10 @@
 
 set -eu
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 029"
+fi
+
 echo "Making the abosolute /lib64/ld-linux-x86-64.so.2 symlinks relative"
 
 # This way core mounted at /snap/core*/current/... refers to the ld

@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 # undo all symlinks to /etc/alternatives and replace with their real
 # counterparts. The alternatives system looks like this:
 #

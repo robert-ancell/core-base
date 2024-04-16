@@ -8,6 +8,11 @@
 
 set -e
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID H001"
+fi
+
+
 if [ "$(dpkg --print-architecture)" != "amd64" ]; then
     echo "only testing on amd64 for now"
     exit 0

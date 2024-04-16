@@ -5,6 +5,12 @@
 
 set -xe
 
+
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "I: Removing xkb data"
 
 rm -rv /usr/share/X11/xkb

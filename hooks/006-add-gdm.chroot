@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 006"
+fi
+
 export DEBIAN_FRONTEND=noninteractive
 
 # Ensure /proc is available
@@ -158,3 +163,7 @@ rm -f /usr/lib/systemd/user/org.gnome.Shell*
 
 # Stop "gnome-language-selector" showing in the Dash
 rm -f /usr/share/applications/gnome-language-selector.desktop
+
+# FIXME FIXME
+rm -f /var/lib/dbus/machine-id
+printf "" > /etc/machine-id

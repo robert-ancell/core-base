@@ -1,5 +1,10 @@
 #!/bin/sh -ex
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 008"
+fi
+
 mkdir -p /etc/writable/default
 
 # cloud-init needs to be able to modify hostname and has the ability to

@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID H003"
+fi
+
 if [ -f var/lib/dbus/machine-id ]; then
     echo "cannot have /var/lib/dbus/machine-id in the image"
     exit 1

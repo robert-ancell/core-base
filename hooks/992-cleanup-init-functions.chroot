@@ -2,6 +2,11 @@
 
 set -e
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 # Remove including the /etc/lsb-base-logging.sh. The issue here is that
 # the host might have this script. However for snaps that run under
 # confinement including this will fail with a permission error which

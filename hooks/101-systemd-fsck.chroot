@@ -2,6 +2,11 @@
 
 set -eux
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID"
+fi
+
 echo "Remove conflict from systemd-fsck to shutdown"
 sed -i "/^Conflicts=shutdown.target$/d" usr/lib/systemd/system/systemd-fsck@.service
 

@@ -34,10 +34,20 @@ install:
 	# copy static files verbatim
 	/bin/cp -a static/* $(DESTDIR)
 	# generate dconf data for init
-	/usr/bin/dconf compile init-default.compiled dconf-init-data
+	if [ -e $(DESTDIR)/var/lib/dbus/machine-id ]; then \
+		echo "***MACHINE ID M1"; \
+	fi
+	#/usr/bin/dconf compile init-default.compiled dconf-init-data
+	touch init-default.compiled
 	/bin/mv init-default.compiled $(DESTDIR)/
 	mkdir -p $(DESTDIR)/install-data
+	if [ -e $(DESTDIR)/var/lib/dbus/machine-id ]; then \
+		echo "***MACHINE ID M2"; \
+	fi
 	$(CRAFT_PROJECT_DIR)/generate-connections.py $(CRAFT_PROJECT_DIR)/snap-connections.txt $(DESTDIR)/usr/libexec/snap-connections.sh
+	if [ -e $(DESTDIR)/var/lib/dbus/machine-id ]; then \
+		echo "***MACHINE ID M3"; \
+	fi
 	# customize
 	set -eux; for f in ./hooks/[0-9]*.chroot; do		\
 		base="$$(basename "$${f}")";			\

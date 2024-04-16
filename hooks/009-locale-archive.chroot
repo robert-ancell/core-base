@@ -2,6 +2,11 @@
 
 set -eu
 
+
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID 009"
+fi
+
 mkdir -p "/usr/lib/locale"
 
 declare -A found_encodings

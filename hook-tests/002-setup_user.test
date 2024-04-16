@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -e /var/lib/dbus/machine-id ] ; then
+  echo "***MACHINE ID H002"
+fi
+
 for prefix in passwd group shadow; do
     grep -q "^${prefix}:.*extrausers" etc/nsswitch.conf
 done
